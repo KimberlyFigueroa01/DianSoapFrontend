@@ -1,0 +1,226 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+    color: #1a1a2e;
+}
+
+main {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 0 1rem 3rem;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dde3ed;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    background: #1a4f8a;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo svg {
+    width: 28px;
+    height: 28px;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+/* Secciones */
+.section {
+    background: white;
+    border: 1px solid #e5e9f0;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.section h2 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+}
+
+/* Grid */
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Campos */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+.field input {
+    padding: 8px 10px;
+    border: 1px solid #dde3ed;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1a1a2e;
+    background: white;
+    outline: none;
+    transition: border 0.15s;
+}
+
+.field input:focus {
+    border-color: #1a4f8a;
+    box-shadow: 0 0 0 3px rgba(26, 79, 138, 0.1);
+}
+
+/* Botón principal */
+.btn-send {
+    width: 100%;
+    padding: 12px;
+    background: #1a4f8a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    margin-top: 0.5rem;
+}
+
+.btn-send:hover:not(:disabled) {
+    opacity: 0.88;
+}
+
+.btn-send:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Error */
+.error-box {
+    margin-top: 1rem;
+    padding: 12px 16px;
+    background: #fff0f0;
+    border: 1px solid #fca5a5;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #b91c1c;
+}
+
+/* Resultado */
+.result-box {
+    margin-top: 1rem;
+    background: white;
+    border: 1px solid #bbf7d0;
+    border-radius: 12px;
+    padding: 1.25rem;
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.badge.ok {
+    background: #dcfce7;
+    color: #166534;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.result-msg {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a2e;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 16px;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.result-grid .k {
+    color: #6b7280;
+}
+
+.result-grid .v {
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+/* PDF row */
+.pdf-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid #e5e9f0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.btn-pdf {
+    padding: 7px 16px;
+    background: transparent;
+    border: 1px solid #dde3ed;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #1a1a2e;
+    transition: background 0.15s;
+}
+
+.btn-pdf:hover {
+    background: #f4f6f9;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .grid2 {
+        grid-template-columns: 1fr;
+    }
+}
