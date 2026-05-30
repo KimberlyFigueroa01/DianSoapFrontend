@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 export interface InvoiceRequest {
   identificacionVendedor: string;
@@ -64,7 +65,9 @@ export class InvoiceService {
     return this.http.post(this.url, body, {
       headers,
       responseType: 'text'
-    });
+    }).pipe(
+      tap(xml => console.log('XML recibido:', xml))
+    );
   }
 
   parseResponse(xml: string): InvoiceResponse {

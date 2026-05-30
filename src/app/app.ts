@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InvoiceService, InvoiceRequest, InvoiceResponse } from './invoice.service';
@@ -31,7 +31,10 @@ export class App {
     correoCliente: ''
   };
 
-  constructor(private invoiceService: InvoiceService) { }
+  constructor(
+    private invoiceService: InvoiceService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   onSubmit() {
     this.loading = true;
@@ -42,10 +45,12 @@ export class App {
       next: (xml: string) => {
         this.response = this.invoiceService.parseResponse(xml);
         this.loading = false;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         this.errorMsg = err?.message ?? 'Error al conectar con el servidor';
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
