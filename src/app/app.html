@@ -116,6 +116,13 @@
         <span class="k">Número de factura</span>
         <span class="v">{{ response.invoiceNumber }}</span>
       </div>
+
+      <!-- LÍNEA NUEVA -->
+      <div class="result-grid">
+        <span class="k">Correo de confirmación</span>
+        <span class="v">📧 Enviado a {{ form.correoVendedor }}</span>
+      </div>
+
       <div class="pdf-row" *ngIf="response.pdfBase64">
         <span>PDF generado correctamente</span>
         <button type="button" class="btn-pdf" (click)="descargarPdf()">
