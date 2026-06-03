@@ -193,3 +193,17 @@ tr:hover td { background: #fafbfc; }
   font-size: 13px;
   margin-bottom: 1rem;
 }
+
+.btn-pdf {
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid #dce3ea;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #1a3a5c;
+}
+
+.btn-pdf:hover {
+  background: #f5f7fa;
+}

@@ -73,6 +73,11 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  descargarPdf(factura: Factura): void {
+    const url = `${this.API}/facturas/${factura.id}/pdf`;
+    window.open(url, '_blank');
+}
+
   get facturasPaginadas(): Factura[] {
     const inicio = (this.pagina - 1) * this.porPagina;
     return this.facturas.slice(inicio, inicio + this.porPagina);
