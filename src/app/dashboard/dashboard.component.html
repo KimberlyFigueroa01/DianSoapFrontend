@@ -1,0 +1,102 @@
+<div class="dash-wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 8h24v2H4V8zm0 5h24v2H4v-2zm0 5h16v2H4v-2zm18-3l8 5-8 5V20z"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Dashboard de Facturación</h1>
+      <p class="subtitle">Sistema DIAN — Arquitectura SOAP</p>
+    </div>
+    <a routerLink="/" class="btn-back">← Volver al formulario</a>
+  </div>
+
+  <!-- Métricas -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <span class="metric-label">Total facturas</span>
+      <span class="metric-value">{{ stats.totalFacturas }}</span>
+      <span class="badge badge-green">Emitidas</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">Ventas totales</span>
+      <span class="metric-value small">{{ formatCOP(stats.totalVentas) }}</span>
+      <span class="badge badge-blue">Acumulado</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">Facturas hoy</span>
+      <span class="metric-value">{{ stats.facturasHoy }}</span>
+      <span class="badge badge-green">Hoy</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">Vendedores</span>
+      <span class="metric-value">{{ stats.totalVendedores }}</span>
+      <span class="badge badge-blue">Registrados</span>
+    </div>
+  </div>
+
+  <!-- Filtro -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Facturas emitidas</h2>
+      <div class="search-row">
+        <input
+          [(ngModel)]="buscar"
+          (keyup.enter)="cargarFacturas()"
+          placeholder="Buscar por cliente o vendedor..."
+          class="search-input" />
+        <button (click)="cargarFacturas()" class="btn-buscar">Buscar</button>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div class="error-box" *ngIf="error">{{ error }}</div>
+
+    <!-- Tabla -->
+    <div class="table-wrapper" *ngIf="!cargando">
+      <table>
+        <thead>
+          <tr>
+            <th>Número factura</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Producto</th>
+            <th>Total</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of facturasPaginadas">
+            <td class="factura-num">{{ f.numeroFactura }}</td>
+            <td>{{ formatFecha(f.fechaEmision) }}</td>
+            <td>{{ f.nombreCliente }}</td>
+            <td>{{ f.nombreVendedor }}</td>
+            <td>{{ f.productoVendido }}</td>
+            <td class="total-col">{{ formatCOP(f.total) }}</td>
+            <td><span class="badge badge-green">✓ {{ f.estado }}</span></td>
+          </tr>
+          <tr *ngIf="facturas.length === 0">
+            <td colspan="7" class="empty-state">No hay facturas registradas aún</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="loading" *ngIf="cargando">Cargando facturas...</div>
+
+    <!-- Paginación -->
+    <div class="pagination" *ngIf="totalPaginas.length > 1">
+      <span>{{ facturas.length }} facturas</span>
+      <button
+        *ngFor="let p of totalPaginas"
+        (click)="pagina = p"
+        [class.active]="pagina === p"
+        class="page-btn">{{ p }}</button>
+    </div>
+  </div>
+
+</div>
