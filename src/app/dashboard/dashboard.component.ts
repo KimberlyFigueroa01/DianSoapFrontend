@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 interface Factura {
   id: number;
@@ -47,7 +48,15 @@ export class DashboardComponent implements OnInit {
   pagina = 1;
   porPagina = 5;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {
+  // Recarga datos cada vez que navegas a esta ruta
+  this.router.events.pipe(
+    filter(event => event instanceof NavigationEnd)
+  ).subscribe(() => {
+    this.cargarStats();
+    this.cargarFacturas();
+  });
+}
 
   ngOnInit(): void {
     this.cargarStats();

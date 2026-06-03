@@ -27,10 +27,6 @@ main {
 }
 
 .logo {
-    width: 48px;
-    height: 48px;
-    background: #1a4f8a;
-    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,7 +62,7 @@ h1 {
 .section h2 {
     font-size: 13px;
     font-weight: 600;
-    color: #6b7280;
+    color: #1a1a2e;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 14px;
@@ -90,7 +86,7 @@ h1 {
 .field label {
     font-size: 12px;
     font-weight: 500;
-    color: #6b7280;
+    color: #374151;
 }
 
 .field input {
@@ -105,15 +101,15 @@ h1 {
 }
 
 .field input:focus {
-    border-color: #1a4f8a;
-    box-shadow: 0 0 0 3px rgba(26, 79, 138, 0.1);
+    border-color: #009166;
+    box-shadow: 0 0 0 3px rgba(0, 145, 102, 0.1);
 }
 
 /* Botón principal */
 .btn-send {
     width: 100%;
     padding: 12px;
-    background: #1a4f8a;
+    background: #009166;
     color: white;
     border: none;
     border-radius: 10px;
@@ -227,9 +223,9 @@ h1 {
 
 .btn-dashboard {
   margin-left: auto;
-  background: #1a4f8a;
+  background: #009166;
   color: white;
-  border: 1px solid #1a3a5c;
+  border: 1px solid #00734f;
   padding: 6px 14px;
   border-radius: 6px;
   text-decoration: none;
@@ -237,5 +233,5 @@ h1 {
 }
 
 .btn-dashboard:hover {
-  background: #25507d;
+  background: #007a54;
 }
